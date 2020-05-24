@@ -1,0 +1,108 @@
+\section{冷冻沙丁鱼}
+\begin{Parallel}[v]{0.47\textwidth}{0.47\textwidth}
+
+\ParallelLText
+{
+\( (A_i, B_i) = (0, 0) \) のイワシは他のどの個体とも仲が悪いので，「\( (A_i, B_i) = (0, 0) \) なイワシをどれか1 匹だけ選ぶ」「\( (A_i, B_i) = (0, 0) \)なイワシをどれも選ばない」のいずれかです．勿論，前者の選び方はそのようなイワシの個数に等しいので，以下では\( (A_i, B_i) = (0, 0) \)なイワシを除外して考えます．
+}
+\ParallelRText
+{
+    \( (A_i,B_i)=(0,0) \)的沙丁鱼会和任意的沙丁鱼组合都会腐化，就有只选一只\( (A_i,B_i)=(0,0) \)的沙丁鱼，和\( (A_i,B_i)=(0,0) \)一只都不选这两类，显然，前者的选法和\( (A_i,B_i)=(0,0) \)的沙丁鱼数量一样。接下来主要对后者情况讨论，即\( (A_i,B_i) \neq (0,0) \).
+}
+\ParallelPar
+
+\ParallelLText{
+    イワシの「\ruby{傾}{かたむ}き」を \( \frac{A_i}{B_i} \) として，これを\ruby{既約}{きやく} \ruby{分数}{ぶんすう}で表すことを考えます．具体的には，次のように決めます
+}
+\ParallelRText{
+   定义沙丁鱼的“斜率”为\( \frac{A_i}{B_i} \)，并且这个数值要表示为分数约分后的结果。 更具体的规则如下所示
+
+}
+\ParallelPar
+
+\end{Parallel}
+\begin{enumerate}
+    \item \( B_i=0 \)のとき、傾きは1/0
+
+\textcolor{red}{
+    \rightline{\( B_i=0 \)时，斜率为1/0}
+}
+
+    \item \(B_i >0 \)のとき、傾きは\( \frac{A_i}{\gcd(A_i,B_i)} / \frac{B_i}{\gcd(A_i,B_i)} \)
+
+\textcolor{red}{
+    \rightline{\(B_i >0 \)时，斜率为\( \frac{A_i}{\gcd(A_i,B_i)} / \frac{B_i}{\gcd(A_i,B_i)} \)    
+    }
+}
+
+    \item \(B_i <0 \)のとき、傾きは\( -\frac{A_i}{\gcd(A_i,B_i)} / -\frac{B_i}{\gcd(A_i,B_i)} \)
+
+\textcolor{red}{
+    \rightline{
+    \(B_i >0 \)时，斜率为\( \frac{A_i}{\gcd(A_i,B_i)} / \frac{B_i}{\gcd(A_i,B_i)} \)
+    }
+}
+
+\end{enumerate}
+
+\begin{Parallel}[v]{0.47\textwidth}{0.47\textwidth}
+    \ParallelLText{
+        ちょっとした場合分けから，傾きと仲の悪さの関係について次のことが言えます．
+    }
+    \ParallelRText{
+        以下的情况中描述了斜率和相互腐化的关系
+        
+    }
+\end{Parallel}
+
+\begin{enumerate}
+\item 傾き 1/0 のイワシと仲が悪いのは，傾き 0/1 のイワシ全てのみ．逆もまた然り．
+
+\textcolor{red}{
+\rightline{斜率1/0的沙丁鱼会与斜率为0/1的发生腐化，反之亦然
+}
+}
+
+
+\item 傾き a/b ( \(a, b \neq 0 \) ) のイワシと仲が悪いのは，傾き −b/a (を a の符号で通分したもの) のイワシ全てのみ．逆もまた然り．
+
+\textcolor{red}{
+\rightline{斜率为a/b( \(a, b \neq 0 \) )的沙丁鱼会与斜率为-b/a的发生腐化，反之亦然
+}
+}
+
+\end{enumerate}
+
+\begin{Parallel}[v]{0.47\textwidth}{0.47\textwidth}
+\ParallelLText{
+たとえば以下の傾きが，互いに ”仲の悪いつがい” です．
+}
+\ParallelRText{
+例如以下几组斜率是相互被腐化的
+}
+\end{Parallel}
+
+    \[ 1/0 \leftarrow \rightarrow 0/1  \] 
+    \[ 5/3 \leftarrow \rightarrow -3/5  \] 
+    \[ 2/1 \leftarrow \rightarrow -1/2  \] 
+
+
+\begin{Parallel}[v]{0.47\textwidth}{0.48\textwidth}
+    \ParallelLText{
+したがって，”仲の悪いつがい” になる傾きのペア (高々 N 通り) 全てについて，連想配列などを使って各傾きになるイワシの個数が求まれば，その後は基礎的な数え上げの範疇です．オーバーフローには気を付けてください．
+    }
+    \ParallelRText{
+    因此，可以使用组成“沙丁鱼腐化斜率数对”（共N个），把斜率出现的个数存储在关联数组（例如C++的map或Python的dict）当中，然后进行计数即可。
+    请小心数据溢出。
+    }
+    \ParallelPar
+    \ParallelLText{
+\( (A_i,B_i) \) の制約が大きいので，傾きを有理数の代わりに実数で表現しようとすると (long double でも) 精度が足りないおそれがあります．
+    }
+    \ParallelRText{
+        由于此题\( (A_i,B_i) \)的数值可能很大，如果用相应的小数代替分数，即使是用long double精度仍然不够。
+    }
+
+\end{Parallel}
+
+\lstinputlisting[language=C++,numbers=left,numberstyle=\tiny,frame=shadowbox,keywordstyle=\color{blue!70}]{resources/sardines/Main.cpp}
