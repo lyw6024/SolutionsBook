@@ -1,0 +1,41 @@
+
+\section{Xor Battle}
+\subsection{问题描述}
+
+有0和1两人进行对战。对于变量x（初始为0），两人将按照给定的长度为\( N \) 的序列\( \{A_i\} \)进行操作，
+长为N的01串\( S_i \) 表示第i步由 \( S_i \) 号选手进行操作。
+第i人可以将当前变量x变成 \( x \)   XOR  \( A_i \)，
+也可以什么都不做放弃这个\( A_i \)。这N个\( A_i \)都用完之后如果变量x为0，则0胜，否则1胜。
+假定两人对战时都会出最优的策略，请判断0能否取胜。
+
+
+\subsection{分析}
+\input{resources/agc045abc/solutionA}
+
+\newpage
+
+\section{01 Unbalanced}
+\subsection{问题描述}
+
+给出一个仅由'0', '1'或'?'构成的字符串S。将S中的'?'替换为'0'和'1'（各个'?'互不影响相互独立）之后得到新字符串S′。
+定义S′的不平衡度为：S′中第l个字符到第r个字符中0与1的个数之差的绝对值的最大值，\( 1 \leq l \leq r \leq N \)。
+给定一个S，试求一个最小S′的不平衡度 。
+
+\subsection{分析}
+\input{resources/agc045abc/solutionB}
+
+\newpage
+\section{Range Set}
+\subsection{问题描述}
+
+有一长为N的字符串，初始全为0。Alice可以对这个字符串做这样的操作：
+
+\begin{itemize}
+    \item 选择连续的A个字符置为0
+    \item 选择连续的B个字符置为1
+\end{itemize}
+
+不限制Alice执行的次数和顺序，计算Alice可以得到多少种不同字符串。结果较大，输出时结果对 109+7取余。
+
+\subsection{分析}
+\input{resources/agc045abc/solutionC}

@@ -1,0 +1,50 @@
+\begin{Parallel}[v]{0.5\textwidth}{0.45\textwidth}
+
+    \ParallelLText{
+        For each \( 1 \leq i \leq N^2 \) , we compute the minimum number of viewers that will hate viewer \(i\) forever (the answer is the sum of these values). This number coincides with the minimum cost of a path from the seat of viewer \(i\) to the sides of the square, considering that going through an empty seat has cost 0 and going through an occupied seat has cost 1. Let \( H_k(i) \) be the minimum cost (as defined above) of a path from the seat of viewer i to the outside after the first \(k\) viewers have left the cinema.
+
+    }
+    \ParallelRText{
+        对每个\(i\)我们都计算一下被嫌弃的最小人数（这些之和就是答案）.这个数字与它到正方形的边界上的观众数相等。
+
+
+    }
+    \ParallelPar
+
+    \ParallelLText{
+    Key observation
+
+The values \( H_k(i) \) are decreasing (for \( k \) going from  \( 0\) to \( N^2 \) ) and at the beginning we have 
+    }
+\ParallelRText{
+
+}
+\ParallelPar
+\end{Parallel}
+
+\[ \sum_{k=1}^{N^2}{H_0(k)} \approx \frac{N^3}{6} \]
+
+\begin{Parallel}[v]{0.5\textwidth}{0.45\textwidth}
+
+\ParallelLText{
+    Our strategy is to keep all values \( H_k(i) \) updated at all times. Initializing \( H_0(1), ... , H_0(N^2 ) \) in \(O(N^2) \) is straightforward. Let us show how to update \( H_{k−1}(1), ... , H_{k−1}(N^2 ) \) to get \( H_k(1), ... , H_k(N^2 ) \). When the viewer \(P_k\) goes away, we perform a breadth-first search (or a depth-first search) starting from the seats of \( P_k \) and updating the values. During the k-th breadth-first search, we will visit only the seats \( i\) such that \( H_k(i) < H_{k−1}(i) \), hence the total number of seats visited in the \( N^2\) steps (for \( 1 \leq k \leq N^2 ) \)  is \( O(N^3 ) \) (see the key observation). 
+}
+\ParallelRText{
+    我们的方案是保持所有\(H_k(i)\)总在更新。\(O(N^2)\)的时间初始化\( H_0(1), ... , H_0(N^2 ) \) 。
+    接下来将讨论如何从 \( H_{k−1}(1), ... , H_{k−1}(N^2 ) \) 得出 \( H_k(1), ... , H_k(N^2 ) \).
+    当观众\(P_k\)离开时，我们用BFS（或DFS）从\(P_k\)开始更新。当BFS进行到第k名观众时，就只访问那些\( H_k(i) < H_{k-1}(i) \)的位置，这样访问所有\(N^2\)个位置之后时间复杂度是\(O(N^3)\)。
+
+}
+\ParallelPar
+\ParallelLText{
+    The time complexity of this solution is \( O(N^3 ) \) with a small constant which is sufficient to get accepted (some optimization might be required in slow languages such as python). 
+}
+\ParallelRText{
+    这样的解法时间复杂度是常数比较小的\( O(N^3) \)，这足够Accepted(不过像Python等比较慢的语言需要额外优化一下)
+
+}
+\ParallelPar
+
+
+    
+\end{Parallel}
