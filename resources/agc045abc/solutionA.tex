@@ -1,0 +1,60 @@
+
+\begin{Parallel}[v]{0.5\textwidth}{0.45\textwidth}
+    \ParallelLText{
+        この解説では，0-based index を用います．次のような DP を考えます．
+
+
+        DP[i] = 次の条件を満たす整数 t の集合．
+– ラウンド i(0-based) の直前で x = t であるとき，ここからゲームを続けて，最終的に x = 0 になる．
+
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+    \ParallelLText{
+
+この DP を後ろから埋めていきます．まず，DP[N] = {0} です．
+
+次に DP[i] の遷移を考えます．Si = 0 の場合は簡単で，
+\[
+DP[i] = DP[i + 1] \cup \{v \oplus A_i |v \in DP[i + 1]\}
+\]
+です．
+
+
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+    \ParallelLText{
+つぎに Si = 1 の場合です．まず  \( Ai \in DP[i + 1] \) の場合を考えます．ラウンド i の時点で \( x \notin DP[i + 1] \) 
+なら，何もしなければよいです．逆に，\( x \in DP[i + 1]\) の場合，\( x \oplus Ai \in DP[i + 1] \) なので，操作をしても意
+味がありません．よって DP[i] = DP[i + 1] となります．
+
+
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+    \ParallelLText{
+\( Ai \notin DP[i + 1] \) の場合，どんな x に対しても，x または \( x \oplus A_i \) の少なくとも一方は DP[i + 1] に含まれ
+ません．よって，DP[i] = ∅ です．
+
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+    \ParallelLText{
+
+この DP は，xor の基底を管理することで，効率的に計算することができます．
+計算量は 1 ケースあたり \( O(N \log(\max(A_i))) \) になります．
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+\end{Parallel}
