@@ -9,35 +9,21 @@
 
     }
     \ParallelRText{
-<<<<<<< HEAD
         考虑数组DP（下标从0计），\( DP[i] \)的值是满足下列整数t的集合
 
         前i轮中x=t，游戏以x=0结束
-=======
->>>>>>> 8df29a8e04d0ba8867fcba7bf6eedb9eb4c30d40
 
     }
     \ParallelPar
     \ParallelLText{
 
-<<<<<<< HEAD
 この DP を後ろから埋めていきます．まず，\( DP[N] = \{0\} \) です．
 
 次に DP[i] の遷移を考えます．\( S_i = 0 \) の場合は簡単で，
-=======
-この DP を後ろから埋めていきます．まず，DP[N] = {0} です．
-
-次に DP[i] の遷移を考えます．Si = 0 の場合は簡単で，
-\[
-DP[i] = DP[i + 1] \cup \{v \oplus A_i |v \in DP[i + 1]\}
-\]
-です．
->>>>>>> 8df29a8e04d0ba8867fcba7bf6eedb9eb4c30d40
 
 
     }
     \ParallelRText{
-<<<<<<< HEAD
         这个DP从N开始向前计算。首先初始时\( DP[N]=\{0\} \)
 
         接下来考虑DP的转移方程。\(S_i=0\)的情况比较简单：
@@ -55,24 +41,13 @@ DP[i] = DP[i + 1] \cup \{v \oplus A_i |v \in DP[i + 1]\}
 
 
 つぎに \( S_i = 1 \)の場合です．まず  \( Ai \in DP[i + 1] \) の場合を考えます．ラウンド i の時点で \( x \notin DP[i + 1] \) 
-=======
-
-    }
-    \ParallelPar
-    \ParallelLText{
-つぎに Si = 1 の場合です．まず  \( Ai \in DP[i + 1] \) の場合を考えます．ラウンド i の時点で \( x \notin DP[i + 1] \) 
->>>>>>> 8df29a8e04d0ba8867fcba7bf6eedb9eb4c30d40
 なら，何もしなければよいです．逆に，\( x \in DP[i + 1]\) の場合，\( x \oplus Ai \in DP[i + 1] \) なので，操作をしても意
 味がありません．よって DP[i] = DP[i + 1] となります．
 
 
     }
     \ParallelRText{
-<<<<<<< HEAD
 对于\( S_i = 1 \)的情况，先看 \( Ai \in DP[i + 1] \) 时，ラウンド i の時点で \( x \notin DP[i + 1] \) なら，什么都可以。而\( x \in DP[i + 1]\) 时，\( x \oplus Ai \in DP[i + 1] \) なので就没有意义．所以直接 \( DP[i] = DP[i + 1] \) 就可以．
-=======
-
->>>>>>> 8df29a8e04d0ba8867fcba7bf6eedb9eb4c30d40
     }
     \ParallelPar
     \ParallelLText{
@@ -90,13 +65,9 @@ DP[i] = DP[i + 1] \cup \{v \oplus A_i |v \in DP[i + 1]\}
 計算量は 1 ケースあたり \( O(N \log(\max(A_i))) \) になります．
     }
     \ParallelRText{
-<<<<<<< HEAD
         DP数组在XOR运行下可以比较高效完成，每个case可以在
         \( O(N \log(\max(A_i))) \)
         完成
-=======
-
->>>>>>> 8df29a8e04d0ba8867fcba7bf6eedb9eb4c30d40
     }
     \ParallelPar
 \end{Parallel}
