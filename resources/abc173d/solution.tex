@@ -1,0 +1,95 @@
+\begin{Parallel}[v]{0.5\textwidth}{0.45\textwidth}
+    \ParallelLText{
+        $A_i$ はソートして昇順にします．このとき，\[ \sum_{k=1}^{N-1}{A_{N- \lfloor k/2 \rfloor}} \] が答えになることを以下に示します.
+
+    }
+    \ParallelRText{
+        将A进行升序排序后，输出\[ \sum_{k=1}^{N-1}{A_{N- \lfloor k/2 \rfloor}} \]即是本题答案。接下来将给出证明
+    }
+    \ParallelPar
+
+    \ParallelLText{
+        最大値を証明するには，「1. この値にできる」「2. これより良い値にはできない」をそれぞれ示すのが定石です．ここでもこの方針を採用します．
+    }
+    \ParallelRText{
+        为证明此为满意度的最大值，需要证明：1.这是可以达到的数值，2.没有比这个值更大的其它值。接下来将分别对这两点作出证明。
+    }
+    \ParallelPar
+\end{Parallel}
+
+\bigskip
+
+
+\begin{Parallel}[v]{0.5\textwidth}{0.45\textwidth}
+    \ParallelLText{
+
+\textbf{\large どうすれば「この値にできる」？}
+    }
+    \ParallelRText{
+\textbf{\large 为什么这个值可以达到}
+    }
+    \ParallelPar
+\ParallelLText{
+    フレンドリーさが高い順に移動させます．$i + 1$ 番目に輪に加わった人の両隣に $2i + 1$, $2i + 2$ 番目
+    の人を入れるようにすると，「まだ両隣挿入の対象になっていない人 $A $の両隣には，$A$ より早く来た
+    人がいる」状態を常に保てることから，上の値を達成できることが言えます．
+}
+\ParallelRText{
+友善度从高到低排序之后，第$i+1$个会加入第$2i+1$,$2i+2$个人之间，两人之间
+}
+\ParallelPar
+\end{Parallel}
+
+\bigskip
+
+\begin{Parallel}[v]{0.5\textwidth}{0.45\textwidth}
+    \ParallelLText{
+\textbf{\large どうして「これより良い値にはできない」？}
+    }
+    \ParallelRText{
+\textbf{\large 为什么没有比这个值更大的?}
+
+    }
+    \ParallelPar
+    \ParallelLText{
+        まず，フレンドリーさが高い順に移動させる状況のみを考えればよいことを示します．i 番目に移
+        動する人のフレンドリーさを ai として a1 ≥ a2 ≥ · · · ≥ ak < ak+1 なる k があったとき，
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+        
+    \ParallelLText{
+        したがってバブルソートの要領で，移動の順番をフレンドリーさが高い順に並べ替えても損しませ
+ん．ここからはそのような状況だけを考えることにします．
+
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+
+    \ParallelLText{
+        $A_i$が心地よさに寄与するのは高々 1 回です．それ以外の人はどうでしょう？ $A_k$ の左隣に割り込
+        みが起きたら，それ以降は $A_k$ の左隣に $A_k$ よりも後に来た人がいる状態が保たれます．右隣も同様
+        のことが言えるので，結局 $A_k$ の寄与は 2 回までです．
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+
+    \ParallelLText{
+        したがってバブルソートの要領で，移動の順番をフレンドリーさが高い順に並べ替えても損しませ
+ん．ここからはそのような状況だけを考えることにします．
+
+    }
+    \ParallelRText{
+
+    }
+    \ParallelPar
+
+
+
+\end{Parallel}
